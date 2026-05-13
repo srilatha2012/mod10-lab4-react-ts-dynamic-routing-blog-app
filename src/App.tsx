@@ -5,6 +5,8 @@ import { BlogPostDetailedPage } from './blog/pages/BlogPostDetailedPage'
 import { AuthProvider } from './context/AuthContext'
 import Navbar from './components/Navbar'
 import LoginPage from './blog/pages/LoginPage'
+import ProtectedRoute from './components/ProtectedRoute'
+import AdminPage from './blog/pages/AdminPage'
 
 function App() {
 
@@ -18,6 +20,14 @@ function App() {
           <Route path="/blog" element={<BlogIndexPage />} />
           <Route path="/blog/:slug" element={<BlogPostDetailedPage />} />
            <Route path="/login" element={<LoginPage />} />
+            <Route 
+              path="/admin" 
+              element={
+                <ProtectedRoute>
+                  <AdminPage />
+                </ProtectedRoute>
+              } 
+            />
         </Routes>
       </AuthProvider>
     </BrowserRouter>
